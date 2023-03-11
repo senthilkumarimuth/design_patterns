@@ -4,23 +4,11 @@ This module provides implementation for singleton
 """
 
 
-class Singleton:
-    __instance = None
-
-    @staticmethod
-    def getInstance():
-        """ Static access method. """
-        if Singleton.__instance == None:
-            Singleton()
-        return Singleton.__instance
-
-    def __init__(self):
-       """ Virtually private constructor. """
-       if Singleton.__instance != None:
-          raise Exception("This class is a singleton!")
-       else:
-          Singleton.__instance = self
-
+class Singleton(object):
+    def __new__(cls):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(Singleton, cls).__new__(cls)
+        return cls.instance
 
 
 if __name__ == "__main__":
@@ -52,10 +40,8 @@ if __name__ == "__main__":
 
     obj = log()
     print(obj.info('test message'))
-    print(obj.getInstance())
-    try:
-        obj1= log()
-        print(obj.info('test message 1'))
-        print(obj.getInstance())
-    except Exception as error:
-        print(error)
+    print(id(obj))
+    obj1= log()
+    print(obj.info('test message 1'))
+    print(id(obj1))
+
