@@ -10,4 +10,4 @@ operates the different classes
 
 # diagram
 
-![Alt text](./readme_files/Facade-method-class-diagram.PNG?raw=true "vectorstore")
+![Alt text](./readme_files/Facade-method-class-diagram.png?raw=true "vectorstore")
